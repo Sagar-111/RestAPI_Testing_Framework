@@ -13,7 +13,7 @@ public class Requests {
 		return get_req_res;
 	}
 
-	public static Response Create_Tourist(TouristData payload) {
+	public static Response create_Tourist(TouristData payload) {
 		Response post_req_res = given().accept("application/json").contentType("application/json").body(payload).when()
 				.get(Routes.post_URL);
 		return post_req_res;
@@ -25,15 +25,15 @@ public class Requests {
 		return getST_req_res;
 	}
 
-	public static Response Create_new_Tourist(TouristData payload, int id) {
+	public static Response create_new_Tourist(TouristData payload, int id) {
 		Response put_req_res = given().accept("application/json").contentType("application/json").pathParam("id", id)
 				.body(payload).when().get(Routes.put_URL);
 		return put_req_res;
 	}
 
-	public static Response delete_Tourist() {
-		Response delete_req_res = given().accept("application/json").contentType("application/json").when()
-				.get(Routes.delete_URL);
+	public static Response delete_Tourist(int id) {
+		Response delete_req_res = given().accept("application/json").contentType("application/json").pathParam("id", id)
+				.when().get(Routes.delete_URL);
 		return delete_req_res;
 	}
 
