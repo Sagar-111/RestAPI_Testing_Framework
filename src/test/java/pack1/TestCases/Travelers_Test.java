@@ -52,7 +52,11 @@ public class Travelers_Test {
 	public void create_traveler() {
 		Response create_Tourists = Requests.create_Tourist(travelerInfo);
 		create_Tourists.then().log().all();
-		Assert.assertEquals(create_Tourists.getStatusCode(), 200);
+		Assert.assertEquals(create_Tourists.getStatusCode(), 201);
+		
+		Response get_Tourists = Requests.get_Tourist();
+		get_Tourists.then().log().all();
+		Assert.assertEquals(get_Tourists.getStatusCode(), 200);
 	}
 	
 	@Test(priority=3)
