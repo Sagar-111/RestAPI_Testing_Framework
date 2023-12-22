@@ -5,7 +5,7 @@ import static io.restassured.RestAssured.*;
 import io.restassured.response.Response;
 import pack1.Payload.TouristData;
 
-public class Requests {
+public class TravellersRequests {
 
 	public static Response get_Tourist() {
 		Response get_req_res = given().accept("text/html").contentType("application/json").when()

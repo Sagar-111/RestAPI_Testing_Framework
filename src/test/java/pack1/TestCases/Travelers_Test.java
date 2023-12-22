@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import com.github.javafaker.Faker;
 
 import io.restassured.response.Response;
-import pack1.Endpoints.Requests;
+import pack1.Endpoints.TravellersRequests;
 import pack1.Payload.TouristData;
 
 public class Travelers_Test {
@@ -43,18 +43,18 @@ public class Travelers_Test {
 	
 	@Test(priority=1)
 	public  void getTravelsInfo(){
-		Response get_Tourists = Requests.get_Tourist();
+		Response get_Tourists = TravellersRequests.get_Tourist();
 		get_Tourists.then().log().all();
 		Assert.assertEquals(get_Tourists.getStatusCode(), 200);
 	}
 	
 	@Test(priority=2)
 	public void create_traveler() {
-		Response create_Tourists = Requests.create_Tourist(travelerInfo);
+		Response create_Tourists = TravellersRequests.create_Tourist(travelerInfo);
 		create_Tourists.then().log().all();
 		Assert.assertEquals(create_Tourists.getStatusCode(), 201);
 		
-		Response get_Tourists = Requests.get_Tourist();
+		Response get_Tourists = TravellersRequests.get_Tourist();
 		get_Tourists.then().log().all();
 		Assert.assertEquals(get_Tourists.getStatusCode(), 200);
 	}
@@ -63,7 +63,7 @@ public class Travelers_Test {
 	public void get_tourist_created() {
 		int createdTouristId = this.travelerInfo.getId();
 		System.out.println("========================================="+createdTouristId);
-		Response single_Tourist = Requests.get_single_Tourist(createdTouristId);
+		Response single_Tourist = TravellersRequests.get_single_Tourist(createdTouristId);
 		single_Tourist.then().log().all();
 		Assert.assertEquals(single_Tourist.getStatusCode(), 200);
 	}
@@ -78,14 +78,14 @@ public class Travelers_Test {
 		travelerInfo.setTourist_email(faker.internet().safeEmailAddress());
 		travelerInfo.setTourist_location(faker.address().fullAddress());
 		
-		Response add_Tourist = Requests.create_new_Tourist(travelerInfo, createdTouristId);
+		Response add_Tourist = TravellersRequests.create_new_Tourist(travelerInfo, createdTouristId);
 		add_Tourist.then().log().all();
 		Assert.assertEquals(add_Tourist.getStatusCode(), 200);
 	}
 
 	@Test(priority=5, enabled=false)//Method is not allowed by the server. Status code: 405
 	public  void deleteTravelsInfo(){
-		Response delete_it = Requests.delete_Tourist(createdTouristId);
+		Response delete_it = TravellersRequests.delete_Tourist(createdTouristId);
 		delete_it.then().log().all();
 		Assert.assertEquals(delete_it.getStatusCode(), 200);
 	}
