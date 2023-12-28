@@ -2,11 +2,11 @@ package pack1.Payload;
 
 public class TouristData {
 
-	 int id;
-	 String tourist_name;
-	 String tourist_email;
-	 String tourist_location;
-	 String createdat;
+	 private int id;
+	 private String tourist_name;
+	 private String tourist_email;
+	 private String tourist_location;
+	 private String createdat;
 	 
 	 
 	 public int getId() {
