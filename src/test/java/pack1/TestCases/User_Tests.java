@@ -46,7 +46,7 @@ public class User_Tests {
 	public static void get_ListOf_Users() {
 		Response list_Users = Users_Requests.list_User();
 		list_Users.then().log().all();
-		Assert.assertEquals(list_Users.getStatusCode(), 401);
+		Assert.assertEquals(list_Users.getStatusCode(), 200);
 	}
 	@Test(priority=2)
 	public static void createNewUser() {
